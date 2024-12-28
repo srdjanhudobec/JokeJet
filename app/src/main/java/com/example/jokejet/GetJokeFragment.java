@@ -152,8 +152,10 @@ public class GetJokeFragment extends Fragment {
 
             if(flagsPart != "" || typePart != "" || containsPart != "") {
                 url = "https://v2.jokeapi.dev/joke/" + categoriesPart +  "?" + flagsPart + typePart + containsPart;
-            }else if(flagsPart == "" && typePart == "" && containsPart == ""){
+            }else if(categoriesPart == "Any"){
                 url = "https://v2.jokeapi.dev/joke/Any";
+            }else{
+                url = "https://v2.jokeapi.dev/joke/" + categoriesPart;
             }
             Log.d("url",url);
             getParentFragmentManager().setFragmentResult("rememberedFilters", result);
