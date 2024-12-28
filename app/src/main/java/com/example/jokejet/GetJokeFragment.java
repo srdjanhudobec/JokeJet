@@ -13,6 +13,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.util.Log;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +37,7 @@ public class GetJokeFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private String url;
+    private String url = "https://v2.jokeapi.dev/joke/Any";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -90,6 +99,17 @@ public class GetJokeFragment extends Fragment {
             }
         });
 
+        Button getJokeButton = view.findViewById(R.id.getJokeButton);
+        TextView jokeTextView = view.findViewById(R.id.jokeTextView);
+        TextView jokeCategoryTextView = view.findViewById(R.id.jokeCategoryTextView);
+        Button revealDeliveryButton = view.findViewById(R.id.revealDeliveryButton);
+
+        getJokeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getJoke(jokeTextView,jokeCategoryTextView,revealDeliveryButton);
+            }});
+
         return view;
     }
 
@@ -113,7 +133,7 @@ public class GetJokeFragment extends Fragment {
             if (result.getBoolean("Sexist")) flags.add("sexist");
             if (result.getBoolean("Explicit")) flags.add("explicit");
 
-            String flagsPart = flags.isEmpty() ? "" : "?&blacklistFlags=" + String.join(",", flags);
+            String flagsPart = flags.isEmpty() ? "" : "&blacklistFlags=" + String.join(",", flags);
 
             boolean single = result.getBoolean("Single");
             boolean twopart = result.getBoolean("Twopart");
@@ -130,10 +150,62 @@ public class GetJokeFragment extends Fragment {
                 containsPart = "&contains=" + jokeContains;
             }
 
-            url = "https://v2.jokeapi.dev/joke/" + categoriesPart + flagsPart + typePart + containsPart;
-
+            if(flagsPart != "" || typePart != "" || containsPart != "") {
+                url = "https://v2.jokeapi.dev/joke/" + categoriesPart +  "?" + flagsPart + typePart + containsPart;
+            }else if(flagsPart == "" && typePart == "" && containsPart == ""){
+                url = "https://v2.jokeapi.dev/joke/Any";
+            }
             Log.d("url",url);
             getParentFragmentManager().setFragmentResult("rememberedFilters", result);
         });
+    }
+
+    private void getJoke(TextView jokeTextView,TextView categoryTextView,Button revealDeliveryButton){
+        RequestQueue queue = Volley.newRequestQueue(requireContext());
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            if (response.has("setup") && response.has("delivery")) {
+                                String setup = response.getString("setup");
+                                jokeTextView.setText(setup);
+
+                                revealDeliveryButton.setVisibility(View.VISIBLE);
+
+                                revealDeliveryButton.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        try {
+                                            String delivery = response.getString("delivery");
+                                            jokeTextView.setText(delivery);
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                });
+
+                            } else if (response.has("joke")) {
+                                String joke = response.getString("joke");
+                                jokeTextView.setText(joke);
+
+                                revealDeliveryButton.setVisibility(View.INVISIBLE);
+                            }
+
+                            String category = response.getString("category");
+                            categoryTextView.setText(category);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Error",error.toString());
+            }
+        });
+
+        queue.add(jsonObjectRequest);
     }
 }

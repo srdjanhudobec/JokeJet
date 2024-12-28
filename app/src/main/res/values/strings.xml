@@ -23,6 +23,7 @@
     <string name="single">Single</string>
     <string name="twopart">Twopart</string>
     <string name="jokeContains_textView">Joke contains:</string>
+    <string name="reveal_delivery_button">Reveal delivery</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
