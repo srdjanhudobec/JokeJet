@@ -13,6 +13,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link GetJokeFragment#newInstance} factory method to
@@ -24,6 +27,8 @@ public class GetJokeFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    private String url;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -68,21 +73,17 @@ public class GetJokeFragment extends Fragment {
 
         NavController cont = NavHostFragment.findNavController(this);
 
-        getParentFragmentManager().setFragmentResultListener("filters", getViewLifecycleOwner(), (requestKey, result) -> {
-            String returnedData = result.getString("filter1");
-            TextView textView = view.findViewById(R.id.textView2);
-            textView.setText(returnedData);
-        });
+        generateUrl();
 
         Button filterButton = view.findViewById(R.id.filterButton);
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int startDestination = cont.getCurrentDestination().getId();
-                Bundle bundle = new Bundle();
-                bundle.putString("fromGetJokeToFilter", "fromGet");
+//                Bundle bundle = new Bundle();
+//                bundle.putString("fromGetJokeToFilter", "fromGet");
                 if (startDestination == R.id.getJokeFragment) {
-                    cont.navigate(R.id.action_getJokeFragment_to_filterJokeFragment, bundle);
+                    cont.navigate(R.id.action_getJokeFragment_to_filterJokeFragment);
                 } else {
                     cont.popBackStack();
                 }
@@ -90,5 +91,49 @@ public class GetJokeFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void generateUrl(){
+        getParentFragmentManager().setFragmentResultListener("filters", getViewLifecycleOwner(), (requestKey, result) -> {
+            List<String> categories = new ArrayList<>();
+            if (result.getBoolean("Programming")) categories.add("Programming");
+            if (result.getBoolean("Misc")) categories.add("Misc");
+            if (result.getBoolean("Dark")) categories.add("Dark");
+            if (result.getBoolean("Pun")) categories.add("Pun");
+            if (result.getBoolean("Spooky")) categories.add("Spooky");
+            if (result.getBoolean("Christmas")) categories.add("Christmas");
+
+            String categoriesPart = categories.isEmpty() ? "Any" : String.join(",", categories);
+
+            List<String> flags = new ArrayList<>();
+            if (result.getBoolean("Nsfw")) flags.add("nsfw");
+            if (result.getBoolean("Religious")) flags.add("religious");
+            if (result.getBoolean("Political")) flags.add("political");
+            if (result.getBoolean("Racist")) flags.add("racist");
+            if (result.getBoolean("Sexist")) flags.add("sexist");
+            if (result.getBoolean("Explicit")) flags.add("explicit");
+
+            String flagsPart = flags.isEmpty() ? "" : "?&blacklistFlags=" + String.join(",", flags);
+
+            boolean single = result.getBoolean("Single");
+            boolean twopart = result.getBoolean("Twopart");
+            String typePart = "";
+            if (single && !twopart) {
+                typePart = "&type=single";
+            } else if (!single && twopart) {
+                typePart = "&type=twopart";
+            }
+
+            String jokeContains = result.getString("JokeContains");
+            String containsPart = "";
+            if (jokeContains != null && !jokeContains.isEmpty()) {
+                containsPart = "&contains=" + jokeContains;
+            }
+
+            url = "https://v2.jokeapi.dev/joke/" + categoriesPart + flagsPart + typePart + containsPart;
+
+            Log.d("url",url);
+            getParentFragmentManager().setFragmentResult("rememberedFilters", result);
+        });
     }
 }

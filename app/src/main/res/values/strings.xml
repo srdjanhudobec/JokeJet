@@ -4,6 +4,25 @@
     <string name="filter_button">Filter</string>
     <string name="submit_button">Submit</string>
     <string name="cancel_button">Cancel</string>
+    <string name="filters_textView">Filters</string>
+    <string name="categories_textView">Category/Categories:</string>
+    <string name="programming">Programming</string>
+    <string name="misc">Misc</string>
+    <string name="dark">Dark</string>
+    <string name="pun">Pun</string>
+    <string name="spooky">Spooky</string>
+    <string name="christmas">Christmas</string>
+    <string name="flags_textView">Flags to blacklist:</string>
+    <string name="nsfw">Nsfw</string>
+    <string name="religious">Religious</string>
+    <string name="political">Political</string>
+    <string name="racist">Racist</string>
+    <string name="sexist">Sexist</string>
+    <string name="explicit">Explicit</string>
+    <string name="jokeType_textView">Joke type:</string>
+    <string name="single">Single</string>
+    <string name="twopart">Twopart</string>
+    <string name="jokeContains_textView">Joke contains:</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

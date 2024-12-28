@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -63,24 +66,106 @@ public class FilterJokeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_filter_joke, container, false);
+        View fragmentView = inflater.inflate(R.layout.fragment_filter_joke, container, false);
 
         NavController cont = NavHostFragment.findNavController(this);
 
-        TextView tv = view.findViewById(R.id.textView);
-        tv.setText(getArguments().getString("fromGetJokeToFilter"));
+        getParentFragmentManager().setFragmentResultListener("rememberedFilters", getViewLifecycleOwner(), (requestKey, result) -> {
+            setFiltersFromBundle(fragmentView, result);
+        });
 
-        Button cancelButton = view.findViewById(R.id.cancelButton);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
+        Button submitButton = fragmentView.findViewById(R.id.submitButton);
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("filter1", "fromFilter");
+                Bundle bundle = setBundleValues(fragmentView);
                 getParentFragmentManager().setFragmentResult("filters", bundle);
                 cont.popBackStack();
             }
         });
 
-        return view;
+        return fragmentView;
+    }
+
+    private void setFiltersFromBundle(View view, Bundle result) {
+        CheckBox programmingCheckBox = view.findViewById(R.id.programmingCheckBox);
+        CheckBox miscCheckBox = view.findViewById(R.id.miscCheckBox);
+        CheckBox darkCheckBox = view.findViewById(R.id.darkCheckBox);
+        CheckBox punCheckBox = view.findViewById(R.id.punCheckBox);
+        CheckBox spookyCheckBox = view.findViewById(R.id.spookyCheckBox);
+        CheckBox christmasCheckBox = view.findViewById(R.id.christmasCheckBox);
+
+        CheckBox nsfwCheckBox = view.findViewById(R.id.nsfwCheckBox);
+        CheckBox religiousCheckBox = view.findViewById(R.id.religiousCheckBox);
+        CheckBox politicalCheckBox = view.findViewById(R.id.politicalCheckBox);
+        CheckBox racistCheckBox = view.findViewById(R.id.racistCheckBox);
+        CheckBox sexistCheckBox = view.findViewById(R.id.sexistCheckBox);
+        CheckBox explicitCheckBox = view.findViewById(R.id.explicitCheckBox);
+
+        CheckBox singleCheckBox = view.findViewById(R.id.singleCheckBox);
+        CheckBox twoPartCheckBox = view.findViewById(R.id.twoPartCheckBox);
+
+        programmingCheckBox.setChecked(result.getBoolean("Programming", false));
+        miscCheckBox.setChecked(result.getBoolean("Misc", false));
+        darkCheckBox.setChecked(result.getBoolean("Dark", false));
+        punCheckBox.setChecked(result.getBoolean("Pun", false));
+        spookyCheckBox.setChecked(result.getBoolean("Spooky", false));
+        christmasCheckBox.setChecked(result.getBoolean("Christmas", false));
+
+        nsfwCheckBox.setChecked(result.getBoolean("Nsfw", false));
+        religiousCheckBox.setChecked(result.getBoolean("Religious", false));
+        politicalCheckBox.setChecked(result.getBoolean("Political", false));
+        racistCheckBox.setChecked(result.getBoolean("Racist", false));
+        sexistCheckBox.setChecked(result.getBoolean("Sexist", false));
+        explicitCheckBox.setChecked(result.getBoolean("Explicit", false));
+
+        singleCheckBox.setChecked(result.getBoolean("Single", false));
+        twoPartCheckBox.setChecked(result.getBoolean("Twopart", false));
+
+        EditText jokeContainsEditText = view.findViewById(R.id.jokeContainsEditText);
+        jokeContainsEditText.setText(result.getString("JokeContains", ""));
+    }
+
+    private Bundle setBundleValues(View view){
+        Bundle bundle = new Bundle();
+
+        CheckBox programmingCheckBox = view.findViewById(R.id.programmingCheckBox);
+        CheckBox miscCheckBox = view.findViewById(R.id.miscCheckBox);
+        CheckBox darkCheckBox = view.findViewById(R.id.darkCheckBox);
+        CheckBox punCheckBox = view.findViewById(R.id.punCheckBox);
+        CheckBox spookyCheckBox = view.findViewById(R.id.spookyCheckBox);
+        CheckBox christmasCheckBox = view.findViewById(R.id.christmasCheckBox);
+
+        CheckBox nsfwCheckBox = view.findViewById(R.id.nsfwCheckBox);
+        CheckBox religiousCheckBox = view.findViewById(R.id.religiousCheckBox);
+        CheckBox politicalCheckBox = view.findViewById(R.id.politicalCheckBox);
+        CheckBox racistCheckBox = view.findViewById(R.id.racistCheckBox);
+        CheckBox sexistCheckBox = view.findViewById(R.id.sexistCheckBox);
+        CheckBox explicitCheckBox = view.findViewById(R.id.explicitCheckBox);
+
+        CheckBox singleCheckBox = view.findViewById(R.id.singleCheckBox);
+        CheckBox twoPartCheckBox = view.findViewById(R.id.twoPartCheckBox);
+
+        EditText jokeContainsEditText = view.findViewById(R.id.jokeContainsEditText);
+
+        bundle.putBoolean("Programming",programmingCheckBox.isChecked());
+        bundle.putBoolean("Misc",miscCheckBox.isChecked());
+        bundle.putBoolean("Dark",darkCheckBox.isChecked());
+        bundle.putBoolean("Pun",punCheckBox.isChecked());
+        bundle.putBoolean("Spooky",spookyCheckBox.isChecked());
+        bundle.putBoolean("Christmas",christmasCheckBox.isChecked());
+
+        bundle.putBoolean("Nsfw",nsfwCheckBox.isChecked());
+        bundle.putBoolean("Religious",religiousCheckBox.isChecked());
+        bundle.putBoolean("Political",politicalCheckBox.isChecked());
+        bundle.putBoolean("Racist",racistCheckBox.isChecked());
+        bundle.putBoolean("Sexist",sexistCheckBox.isChecked());
+        bundle.putBoolean("Explicit",explicitCheckBox.isChecked());
+
+        bundle.putBoolean("Single",singleCheckBox.isChecked());
+        bundle.putBoolean("Twopart",twoPartCheckBox.isChecked());
+
+        bundle.putString("JokeContains",jokeContainsEditText.getText().toString());
+        return bundle;
     }
 }
