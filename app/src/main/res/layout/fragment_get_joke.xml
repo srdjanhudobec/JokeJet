@@ -69,4 +69,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jokeTextView" />
 
+    <Button
+        android:id="@+id/savedJokesButton"
+        android:layout_width="145dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/saved_jokes_button"
+        app:icon="@drawable/baseline_bookmark_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/blackListedJokesButton"
+        android:layout_width="145dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="52dp"
+        android:text="@string/blackListed_jokes_button"
+        app:icon="@drawable/baseline_block_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/savedJokesButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
