@@ -35,7 +35,7 @@
 
     <TextView
         android:id="@+id/jokeTextView"
-        android:layout_width="300dp"
+        android:layout_width="250dp"
         android:layout_height="260dp"
         android:layout_marginBottom="236dp"
         android:textAlignment="center"
@@ -71,26 +71,52 @@
 
     <Button
         android:id="@+id/savedJokesButton"
-        android:layout_width="145dp"
+        android:layout_width="152dp"
         android:layout_height="60dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="60dp"
         android:text="@string/saved_jokes_button"
         app:icon="@drawable/baseline_bookmark_24"
+        app:iconSize="26dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/blackListedJokesButton"
-        android:layout_width="145dp"
+        android:layout_width="152dp"
         android:layout_height="60dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="52dp"
         android:text="@string/blackListed_jokes_button"
         app:icon="@drawable/baseline_block_24"
+        app:iconSize="26dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/savedJokesButton"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/saveJokeButton"
+        android:layout_width="72dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="248dp"
+        app:icon="@drawable/baseline_bookmark_24"
+        app:iconPadding="10dp"
+        app:iconSize="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/savedJokesButton" />
+
+    <Button
+        android:id="@+id/blacklistJokeButton"
+        android:layout_width="72dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="332dp"
+        android:layout_marginTop="248dp"
+        app:icon="@drawable/baseline_block_24"
+        app:iconPadding="10dp"
+        app:iconSize="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/blackListedJokesButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
