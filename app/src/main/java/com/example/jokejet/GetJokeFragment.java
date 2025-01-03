@@ -1,5 +1,6 @@
 package com.example.jokejet;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -85,17 +86,25 @@ public class GetJokeFragment extends Fragment {
         generateUrl();
 
         Button filterButton = view.findViewById(R.id.filterButton);
+        Button savedJokesButton = view.findViewById(R.id.savedJokesButton);
+
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int startDestination = cont.getCurrentDestination().getId();
-//                Bundle bundle = new Bundle();
-//                bundle.putString("fromGetJokeToFilter", "fromGet");
                 if (startDestination == R.id.getJokeFragment) {
                     cont.navigate(R.id.action_getJokeFragment_to_filterJokeFragment);
                 } else {
                     cont.popBackStack();
                 }
+            }
+        });
+
+        savedJokesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(requireContext(), SavedJokes.class);
+                startActivity(i);
             }
         });
 

@@ -1,8 +1,11 @@
 package com.example.jokejet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 
 import androidx.activity.EdgeToEdge;
@@ -29,14 +32,17 @@ public class MainActivity extends AppCompatActivity {
 
         NavHostFragment nhf = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainterView);
         assert nhf != null;
+
+
+
         NavController cont = nhf.getNavController();
-        Database db = new Database(this);
-        JokeRepository jr = new JokeRepository(db);
-        jr.addJoke(1,"neka sala","programming","single",null,"saved");
-        jr.addJoke(2,"sta kaaze neko","programming","twopart","nista","blacklisted");
-        jr.addJoke(3,"sta kaaze neko","programming","twopart","nista","blacklisted");
-        Log.d("saved",jr.getAllJokes("saved").toString());
-        Log.d("blacklisted",jr.getAllJokes("blacklisted").toString());
+//        Database db = new Database(this);
+//        JokeRepository jr = new JokeRepository(db);
+//        jr.addJoke(1,"neka sala","programming","single",null,"saved");
+//        jr.addJoke(2,"sta kaaze neko","programming","twopart","nista","blacklisted");
+//        jr.addJoke(3,"sta kaaze neko","programming","twopart","nista","blacklisted");
+//        Log.d("saved",jr.getAllJokes("saved").toString());
+//        Log.d("blacklisted",jr.getAllJokes("blacklisted").toString());
 //        Context context = getApplicationContext();
 //        boolean isDeleted = context.deleteDatabase("jokejet.sqlite");
 //
