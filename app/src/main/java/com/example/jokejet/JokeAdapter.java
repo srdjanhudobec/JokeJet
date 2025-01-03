@@ -20,8 +20,8 @@ public class JokeAdapter extends RecyclerView.Adapter<JokeAdapter.MyViewHolder> 
         void onDelete(int id);
     }
 
-    public void addJoke(Joke proizvodjac) {
-        this.jokeList.add(proizvodjac);
+    public void addJoke(Joke joke) {
+        this.jokeList.add(joke);
         notifyItemInserted(jokeList.size() - 1);
     }
 
