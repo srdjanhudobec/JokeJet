@@ -1,11 +1,9 @@
 package com.example.jokejet;
 
-import android.content.Context;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
+
 
 
 import androidx.activity.EdgeToEdge;
@@ -30,12 +28,17 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        NavHostFragment nhf = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainterView);
-        assert nhf != null;
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.fragmentContainer);
+        if (navHostFragment == null) {
+            Log.e("MainActivity", "NavHostFragment is not found!");
+            return;
+        }
+        NavController navController = NavHostFragment.findNavController(navHostFragment);
 
 
 
-        NavController cont = nhf.getNavController();
+
 //        Database db = new Database(this);
 //        JokeRepository jr = new JokeRepository(db);
 //        jr.addJoke(1,"neka sala","programming","single",null,"saved");
