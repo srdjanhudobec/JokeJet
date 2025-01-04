@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -131,7 +132,7 @@ public class GetJokeFragment extends Fragment {
         getJokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getJoke(jokeTextView,jokeCategoryTextView,revealDeliveryButton);
+                getJoke(jr, jokeTextView, jokeCategoryTextView, revealDeliveryButton, new int[] {0});
             }});
 
         saveJokeButton.setOnClickListener(new View.OnClickListener() {
@@ -228,9 +229,11 @@ public class GetJokeFragment extends Fragment {
         });
     }
 
-    private void getJoke(TextView jokeTextView,TextView categoryTextView,Button revealDeliveryButton){
+    private void getJoke(JokeRepository jr, TextView jokeTextView, TextView categoryTextView, Button revealDeliveryButton, int[] attemptCounter) {
         joke = new Joke();
         RequestQueue queue = Volley.newRequestQueue(requireContext());
+
+        final int maxAttempts = 3;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
                 new Response.Listener<JSONObject>() {
@@ -239,13 +242,31 @@ public class GetJokeFragment extends Fragment {
                         try {
                             int id = Integer.parseInt(response.getString("id"));
                             joke.setId(id);
+
+                            if (jr.isJokeBlacklisted(id)) {
+                                attemptCounter[0]++;
+                                if (attemptCounter[0] < maxAttempts) {
+                                    jokeTextView.setText("This joke is blacklisted. Retrying...");
+                                    categoryTextView.setText("");
+                                    revealDeliveryButton.setVisibility(View.INVISIBLE);
+
+                                    new Handler().postDelayed(() -> getJoke(jr, jokeTextView, categoryTextView, revealDeliveryButton, attemptCounter), 1000);
+                                } else {
+                                    Toast.makeText(requireActivity(), "No more jokes available after 3 attempts.", Toast.LENGTH_SHORT).show();
+                                    jokeTextView.setText("No jokes available.");
+                                    categoryTextView.setText("");
+                                    revealDeliveryButton.setVisibility(View.INVISIBLE);
+                                }
+                                return;
+                            }
+                            attemptCounter[0] = 0;
+
                             if (response.has("setup") && response.has("delivery")) {
                                 String setup = response.getString("setup");
                                 joke.setContent(setup);
                                 jokeTextView.setText(setup);
 
                                 revealDeliveryButton.setVisibility(View.VISIBLE);
-
                                 revealDeliveryButton.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
@@ -258,13 +279,11 @@ public class GetJokeFragment extends Fragment {
                                         }
                                     }
                                 });
-
                             } else if (response.has("joke")) {
                                 String content = response.getString("joke");
                                 joke.setContent(content);
                                 joke.setDelivery(null);
                                 jokeTextView.setText(content);
-
                                 revealDeliveryButton.setVisibility(View.INVISIBLE);
                             }
 
@@ -278,7 +297,8 @@ public class GetJokeFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Error",error.toString());
+                Log.d("Error", error.toString());
+                Toast.makeText(requireActivity(), "Error occurred while fetching joke.", Toast.LENGTH_SHORT).show();
             }
         });
 

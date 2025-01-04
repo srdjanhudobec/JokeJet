@@ -68,4 +68,10 @@ public class JokeRepository {
         return list;
 
     }
+
+    public boolean isJokeBlacklisted(int id){
+        List<Joke> allJokes = getAllJokes("blacklisted");
+        return allJokes.stream()
+                .anyMatch(joke -> joke.getId() == id);
+    }
 }
