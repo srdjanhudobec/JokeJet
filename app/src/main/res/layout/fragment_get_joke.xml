@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFEB3B"
     tools:context=".GetJokeFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -35,7 +36,7 @@
 
     <TextView
         android:id="@+id/jokeTextView"
-        android:layout_width="250dp"
+        android:layout_width="210dp"
         android:layout_height="260dp"
         android:layout_marginBottom="236dp"
         android:textAlignment="center"

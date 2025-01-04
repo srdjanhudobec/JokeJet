@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFEB3B"
     tools:context=".FilterJokeFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -15,9 +16,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="118dp"
+        android:text="@string/flags_textView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoriesTextView"
-        android:text="@string/flags_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/categoriesTextView" />
 
     <TextView
         android:id="@+id/jokeTypeTextView"
@@ -25,9 +26,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="113dp"
+        android:text="@string/jokeType_textView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flagsTextView"
-        android:text="@string/jokeType_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/flagsTextView" />
 
     <CheckBox
         android:id="@+id/sexistCheckBox"
@@ -93,25 +94,14 @@
         android:id="@+id/submitButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
         android:text="@string/submit_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.429"
-        app:layout_constraintStart_toEndOf="@+id/cancelButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.863" />
-
-    <Button
-        android:id="@+id/cancelButton"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="@string/cancel_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.863" />
+        app:layout_constraintTop_toBottomOf="@+id/jokeContainsEditText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/categoriesTextView"
@@ -119,9 +109,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="104dp"
+        android:text="@string/categories_textView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/categories_textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
         android:id="@+id/miscCheckBox"
