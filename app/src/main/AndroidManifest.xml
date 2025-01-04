@@ -15,6 +15,9 @@
         android:theme="@style/Theme.JokeJet"
         tools:targetApi="31">
         <activity
+            android:name=".BlacklistedJokes"
+            android:exported="false" />
+        <activity
             android:name=".SavedJokes"
             android:exported="false" />
         <activity

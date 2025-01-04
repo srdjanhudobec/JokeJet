@@ -50,9 +50,12 @@ public class JokeAdapter extends RecyclerView.Adapter<JokeAdapter.MyViewHolder> 
         public void bind(Joke joke, OnDeleteClickListener deleteClickListener) {
             txtId.setText(String.valueOf(joke.getId()));
             txtContent.setText(joke.getContent());
-            txtDelivery.setText(joke.getDelivery());
+            if(joke.getDelivery() == null){
+                txtDelivery.setText("");
+            }else{
+                txtDelivery.setText("Delivery: " + joke.getDelivery());
+            }
             txtCategory.setText(joke.getCategory());
-
             btnDelete.setOnClickListener(v -> deleteClickListener.onDelete(joke.getId()));
         }
     }

@@ -3,6 +3,7 @@ package com.example.jokejet;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +26,15 @@ public class JokeRepository {
         cv.put(Joke.FIELD_DELIVERY,delivery);
         cv.put(Joke.FIELD_STATUS,status);
 
-        db.insert(Joke.TABLE_NAME, null, cv);
+        long result = db.insertWithOnConflict("joke", null, cv, SQLiteDatabase.CONFLICT_IGNORE);
 
-        Joke newJoke = new Joke(id, content, category,type,null,status);
-        return newJoke;
+        if (result == -1) {
+            Log.d("JokeRepository", "Failed to insert joke, probably a duplicate.");
+            return null;
+        } else {
+            Joke newJoke = new Joke(id, content, category, type, delivery, status);
+            return newJoke;
+        }
     }
 
 

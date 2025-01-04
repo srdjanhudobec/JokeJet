@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -39,6 +40,8 @@ public class GetJokeFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     private String url = "https://v2.jokeapi.dev/joke/Any";
+
+    private Joke joke = new Joke();
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -85,8 +88,17 @@ public class GetJokeFragment extends Fragment {
 
         generateUrl();
 
+        Database db = new Database(requireActivity());
+        JokeRepository jr = new JokeRepository(db);
         Button filterButton = view.findViewById(R.id.filterButton);
         Button savedJokesButton = view.findViewById(R.id.savedJokesButton);
+        Button blacklistedJokesButton = view.findViewById(R.id.blackListedJokesButton);
+        Button saveJokeButton = view.findViewById(R.id.saveJokeButton);
+        Button blacklistJokeButton = view.findViewById(R.id.blacklistJokeButton);
+        Button getJokeButton = view.findViewById(R.id.getJokeButton);
+        TextView jokeTextView = view.findViewById(R.id.jokeTextView);
+        TextView jokeCategoryTextView = view.findViewById(R.id.jokeCategoryTextView);
+        Button revealDeliveryButton = view.findViewById(R.id.revealDeliveryButton);
 
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,16 +120,61 @@ public class GetJokeFragment extends Fragment {
             }
         });
 
-        Button getJokeButton = view.findViewById(R.id.getJokeButton);
-        TextView jokeTextView = view.findViewById(R.id.jokeTextView);
-        TextView jokeCategoryTextView = view.findViewById(R.id.jokeCategoryTextView);
-        Button revealDeliveryButton = view.findViewById(R.id.revealDeliveryButton);
+        blacklistedJokesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(requireContext(), BlacklistedJokes.class);
+                startActivity(i);
+            }
+        });
 
         getJokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getJoke(jokeTextView,jokeCategoryTextView,revealDeliveryButton);
             }});
+
+        saveJokeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Joke result = null;
+                if (!jokeTextView.getText().toString().isEmpty()) {
+                    if (joke.getDelivery() != null) {
+                        result = jr.addJoke(joke.getId(), joke.getContent(), joke.getCategory(), "twopart", joke.getDelivery(), "saved");
+                    } else {
+                        result = jr.addJoke(joke.getId(), joke.getContent(), joke.getCategory(), "single", null, "saved");
+                    }
+                    if(result != null) {
+                        Toast.makeText(requireActivity(), "Joke saved successfully.", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(requireActivity(), "Joke cannot be saved.", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(requireActivity(), "Joke content cannot be empty.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        blacklistJokeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Joke result = null;
+                if (!jokeTextView.getText().toString().isEmpty()) {
+                    if (joke.getDelivery() != null) {
+                        result = jr.addJoke(joke.getId(), joke.getContent(), joke.getCategory(), "twopart", joke.getDelivery(), "blacklisted");
+                    } else {
+                        result = jr.addJoke(joke.getId(), joke.getContent(), joke.getCategory(), "single", null, "blacklisted");
+                    }
+                    if(result != null) {
+                        Toast.makeText(requireActivity(), "Joke blacklisted successfully.", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(requireActivity(), "Joke cannot be blacklisted.", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(requireActivity(), "Joke content cannot be empty.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         return view;
     }
@@ -172,6 +229,7 @@ public class GetJokeFragment extends Fragment {
     }
 
     private void getJoke(TextView jokeTextView,TextView categoryTextView,Button revealDeliveryButton){
+        joke = new Joke();
         RequestQueue queue = Volley.newRequestQueue(requireContext());
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new JSONObject(),
@@ -179,8 +237,11 @@ public class GetJokeFragment extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                            int id = Integer.parseInt(response.getString("id"));
+                            joke.setId(id);
                             if (response.has("setup") && response.has("delivery")) {
                                 String setup = response.getString("setup");
+                                joke.setContent(setup);
                                 jokeTextView.setText(setup);
 
                                 revealDeliveryButton.setVisibility(View.VISIBLE);
@@ -190,6 +251,7 @@ public class GetJokeFragment extends Fragment {
                                     public void onClick(View view) {
                                         try {
                                             String delivery = response.getString("delivery");
+                                            joke.setDelivery(delivery);
                                             jokeTextView.setText(delivery);
                                         } catch (Exception e) {
                                             e.printStackTrace();
@@ -198,13 +260,16 @@ public class GetJokeFragment extends Fragment {
                                 });
 
                             } else if (response.has("joke")) {
-                                String joke = response.getString("joke");
-                                jokeTextView.setText(joke);
+                                String content = response.getString("joke");
+                                joke.setContent(content);
+                                joke.setDelivery(null);
+                                jokeTextView.setText(content);
 
                                 revealDeliveryButton.setVisibility(View.INVISIBLE);
                             }
 
                             String category = response.getString("category");
+                            joke.setCategory(category);
                             categoryTextView.setText(category);
                         } catch (Exception e) {
                             e.printStackTrace();

@@ -18,6 +18,9 @@ public class Joke {
     private String delivery;
     private String status;
 
+    public Joke() {
+    }
+
     public Joke(int id, String content, String category, String status) {
         this(id, content, category, "Joke", null, status);
     }
