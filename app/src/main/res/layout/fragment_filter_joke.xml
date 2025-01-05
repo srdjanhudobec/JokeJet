@@ -14,38 +14,28 @@
         android:id="@+id/flagsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="118dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="184dp"
         android:text="@string/flags_textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoriesTextView" />
 
-    <TextView
-        android:id="@+id/jokeTypeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="113dp"
-        android:text="@string/jokeType_textView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flagsTextView" />
-
     <CheckBox
-        android:id="@+id/sexistCheckBox"
+        android:id="@+id/nsfwCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
-        android:text="@string/sexist"
-        app:layout_constraintStart_toEndOf="@+id/punCheckBox"
-        app:layout_constraintTop_toBottomOf="@+id/flagsTextView" />
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/nsfw"
+        app:layout_constraintStart_toEndOf="@+id/flagsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/spookyCheckBox" />
 
     <CheckBox
         android:id="@+id/religiousCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
         android:text="@string/religious"
         app:layout_constraintStart_toEndOf="@+id/nsfwCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/christmasCheckBox" />
@@ -54,60 +44,58 @@
         android:id="@+id/racistCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:text="@string/racist"
-        app:layout_constraintStart_toEndOf="@+id/darkCheckBox"
+        app:layout_constraintStart_toEndOf="@+id/politicalCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/flagsTextView" />
 
     <CheckBox
         android:id="@+id/politicalCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="28dp"
         android:text="@string/political"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flagsTextView" />
 
     <CheckBox
-        android:id="@+id/nsfwCheckBox"
+        android:id="@+id/sexistCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="28dp"
-        android:text="@string/nsfw"
-        app:layout_constraintStart_toEndOf="@+id/flagsTextView"
-        app:layout_constraintTop_toBottomOf="@+id/spookyCheckBox" />
+        android:text="@string/sexist"
+        app:layout_constraintStart_toEndOf="@+id/racistCheckBox"
+        app:layout_constraintTop_toBottomOf="@+id/flagsTextView" />
 
     <CheckBox
         android:id="@+id/explicitCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="92dp"
         android:text="@string/explicit"
-        app:layout_constraintStart_toEndOf="@+id/spookyCheckBox"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flagsTextView" />
 
     <Button
         android:id="@+id/submitButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginBottom="60dp"
         android:text="@string/submit_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jokeContainsEditText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/categoriesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="104dp"
         android:text="@string/categories_textView"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,18 +105,18 @@
         android:id="@+id/miscCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="44dp"
         android:text="@string/misc"
-        app:layout_constraintStart_toEndOf="@+id/programmingCheckBox"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoriesTextView" />
 
     <CheckBox
         android:id="@+id/punCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="44dp"
         android:text="@string/pun"
         app:layout_constraintStart_toEndOf="@+id/darkCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/categoriesTextView" />
@@ -137,18 +125,18 @@
         android:id="@+id/spookyCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="112dp"
         android:text="@string/spooky"
-        app:layout_constraintStart_toEndOf="@+id/punCheckBox"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categoriesTextView" />
 
     <CheckBox
         android:id="@+id/christmasCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="112dp"
         android:text="@string/christmas"
         app:layout_constraintStart_toEndOf="@+id/spookyCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/categoriesTextView" />
@@ -157,10 +145,10 @@
         android:id="@+id/darkCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="44dp"
         android:text="@string/dark"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/miscCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/categoriesTextView" />
 
     <CheckBox
@@ -184,12 +172,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/jokeContainsEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintStart_toEndOf="@+id/jokeContainsTextView"
+        app:layout_constraintTop_toBottomOf="@+id/singleCheckBox" />
+
+    <TextView
+        android:id="@+id/jokeContainsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/jokeContains_textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jokeTypeTextView" />
+
+    <TextView
+        android:id="@+id/jokeTypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="184dp"
+        android:text="@string/jokeType_textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flagsTextView" />
+
     <CheckBox
         android:id="@+id/singleCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="96dp"
         android:text="@string/single"
         app:layout_constraintStart_toEndOf="@+id/jokeTypeTextView"
         app:layout_constraintTop_toBottomOf="@+id/sexistCheckBox" />
@@ -198,31 +217,10 @@
         android:id="@+id/twoPartCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="96dp"
         android:text="@string/twopart"
         app:layout_constraintStart_toEndOf="@+id/singleCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/sexistCheckBox" />
-
-    <TextView
-        android:id="@+id/jokeContainsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="60dp"
-        android:text="@string/jokeContains_textView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jokeTypeTextView" />
-
-    <EditText
-        android:id="@+id/jokeContainsEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintStart_toEndOf="@+id/jokeContainsTextView"
-        app:layout_constraintTop_toBottomOf="@+id/singleCheckBox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
