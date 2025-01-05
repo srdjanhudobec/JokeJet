@@ -1,6 +1,8 @@
 package com.example.jokejet;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,5 +45,13 @@ public class SavedJokes extends AppCompatActivity {
         });
 
         recyclerView.setAdapter(adapter);
+
+        ImageButton back = findViewById(R.id.backSavedButton);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

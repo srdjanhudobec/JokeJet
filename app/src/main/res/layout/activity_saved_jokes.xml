@@ -11,7 +11,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/savedJokesRecyclerView"
         android:layout_width="300dp"
-        android:layout_height="600dp"
+        android:layout_height="550dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="92dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,4 +28,16 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/backSavedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#C47400"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/savedJokesRecyclerView"
+        app:srcCompat="@drawable/baseline_arrow_back_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

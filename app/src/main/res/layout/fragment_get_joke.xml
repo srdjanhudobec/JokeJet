@@ -14,6 +14,7 @@
         android:id="@+id/getJokeButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#C47400"
         android:text="@string/get_joke_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,30 +93,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/saveJokeButton"
-        android:layout_width="72dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="248dp"
-        app:icon="@drawable/baseline_bookmark_24"
-        app:iconPadding="10dp"
-        app:iconSize="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/savedJokesButton" />
-
-    <Button
-        android:id="@+id/blacklistJokeButton"
-        android:layout_width="72dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="332dp"
-        android:layout_marginTop="248dp"
-        app:icon="@drawable/baseline_block_24"
-        app:iconPadding="10dp"
-        app:iconSize="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/blackListedJokesButton" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="93dp"
@@ -125,5 +102,27 @@
         android:src="@drawable/icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/savedJokesButton" />
+
+    <ImageButton
+        android:id="@+id/saveJokeButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="280dp"
+        android:backgroundTint="@color/button_background_color"
+        android:src="@drawable/baseline_bookmark_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/savedJokesButton" />
+
+    <ImageButton
+        android:id="@+id/blacklistJokeButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/button_background_color"
+        android:src="@drawable/baseline_block_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/blackListedJokesButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.util.Log;
 import android.widget.Toast;
@@ -94,8 +95,8 @@ public class GetJokeFragment extends Fragment {
         Button filterButton = view.findViewById(R.id.filterButton);
         Button savedJokesButton = view.findViewById(R.id.savedJokesButton);
         Button blacklistedJokesButton = view.findViewById(R.id.blackListedJokesButton);
-        Button saveJokeButton = view.findViewById(R.id.saveJokeButton);
-        Button blacklistJokeButton = view.findViewById(R.id.blacklistJokeButton);
+        ImageButton saveJokeButton = view.findViewById(R.id.saveJokeButton);
+        ImageButton blacklistJokeButton = view.findViewById(R.id.blacklistJokeButton);
         Button getJokeButton = view.findViewById(R.id.getJokeButton);
         TextView jokeTextView = view.findViewById(R.id.jokeTextView);
         TextView jokeCategoryTextView = view.findViewById(R.id.jokeCategoryTextView);
