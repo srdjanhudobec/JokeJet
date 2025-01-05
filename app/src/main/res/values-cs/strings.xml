@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">JokeJet</string>
+    <string name="get_joke_button">Získat vtip</string>
+    <string name="filter_button">Filtr</string>
+    <string name="submit_button">Odeslat</string>
+    <string name="cancel_button">Zrušit</string>
+    <string name="filters_textView">Filtry</string>
+    <string name="categories_textView">Kategorie:</string>
+    <string name="programming">Programování</string>
+    <string name="misc">Různé</string>
+    <string name="dark">Temné</string>
+    <string name="pun">Hříčka</string>
+    <string name="spooky">Strašidelné</string>
+    <string name="christmas">Vánoce</string>
+    <string name="flags_textView">Zakázané:</string>
+    <string name="nsfw">NSFW</string>
+    <string name="religious">Náboženské</string>
+    <string name="political">Politické</string>
+    <string name="racist">Rasistické</string>
+    <string name="sexist">Sexistické</string>
+    <string name="explicit">Explicitní</string>
+    <string name="jokeType_textView">Typ vtipu:</string>
+    <string name="single">Jednoduchý</string>
+    <string name="twopart">Dvoučástný</string>
+    <string name="jokeContains_textView">Vtip obsahuje:</string>
+    <string name="reveal_delivery_button">Odhalit pointu</string>
+    <string name="saved_jokes_button">Uložené vtipy</string>
+    <string name="blackListed_jokes_button">Zakázané vtipy</string>
+    <string name="delete_button">Smazat</string>
+    <string name="saved_jokes_textView">Uložené vtipy</string>
+    <string name="blacklisted_jokes_textView">Zakázané vtipy</string>
+</resources>

@@ -28,6 +28,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -87,6 +88,13 @@ public class GetJokeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_get_joke, container, false);
 
         NavController cont = NavHostFragment.findNavController(this);
+
+        String deviceLanguage = Locale.getDefault().getLanguage();
+        String languagePart = "";
+        if (!deviceLanguage.isEmpty() && (deviceLanguage=="cs" || deviceLanguage == "de" || deviceLanguage == "es" || deviceLanguage=="fr" || deviceLanguage=="pt")) {
+            languagePart = "?lang=" + deviceLanguage;
+        }
+        url += languagePart;
 
         generateUrl();
 
@@ -193,6 +201,13 @@ public class GetJokeFragment extends Fragment {
 
             String categoriesPart = categories.isEmpty() ? "Any" : String.join(",", categories);
 
+            String deviceLanguage = Locale.getDefault().getLanguage();
+            Log.d("language",deviceLanguage);
+            String languagePart = "";
+            if (!deviceLanguage.isEmpty() && (deviceLanguage=="cs" || deviceLanguage == "de" || deviceLanguage == "es" || deviceLanguage=="fr" || deviceLanguage=="pt")) {
+                languagePart = "lang=" + deviceLanguage;
+            }
+
             List<String> flags = new ArrayList<>();
             if (result.getBoolean("Nsfw")) flags.add("nsfw");
             if (result.getBoolean("Religious")) flags.add("religious");
@@ -218,8 +233,8 @@ public class GetJokeFragment extends Fragment {
                 containsPart = "&contains=" + jokeContains;
             }
 
-            if(flagsPart != "" || typePart != "" || containsPart != "") {
-                url = "https://v2.jokeapi.dev/joke/" + categoriesPart +  "?" + flagsPart + typePart + containsPart;
+            if(flagsPart != "" || typePart != "" || containsPart != "" || languagePart != "") {
+                url = "https://v2.jokeapi.dev/joke/" + categoriesPart +  "?" + languagePart + flagsPart + typePart + containsPart;
             }else if(categoriesPart == "Any"){
                 url = "https://v2.jokeapi.dev/joke/Any";
             }else{

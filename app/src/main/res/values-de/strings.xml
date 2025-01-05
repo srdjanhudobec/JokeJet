@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">JokeJet</string>
+    <string name="get_joke_button">Witz holen</string>
+    <string name="filter_button">Filter</string>
+    <string name="submit_button">Absenden</string>
+    <string name="cancel_button">Abbrechen</string>
+    <string name="filters_textView">Filter</string>
+    <string name="categories_textView">Kategorie/Kategorien:</string>
+    <string name="programming">Programmierung</string>
+    <string name="misc">Verschiedenes</string>
+    <string name="dark">Düster</string>
+    <string name="pun">Wortspiel</string>
+    <string name="spooky">Spuk</string>
+    <string name="christmas">Weihnachten</string>
+    <string name="flags_textView">Zu blockierende Themen:</string>
+    <string name="nsfw">NSFW</string>
+    <string name="religious">Religiös</string>
+    <string name="political">Politisch</string>
+    <string name="racist">Rassistisch</string>
+    <string name="sexist">Sexistisch</string>
+    <string name="explicit">Explizit</string>
+    <string name="jokeType_textView">Witztyp:</string>
+    <string name="single">Einzeln</string>
+    <string name="twopart">Zweiteilig</string>
+    <string name="jokeContains_textView">Witz enthält:</string>
+    <string name="reveal_delivery_button">Pointe zeigen</string>
+    <string name="saved_jokes_button">Gespeicherte Witze</string>
+    <string name="blackListed_jokes_button">Blockierte Witze</string>
+    <string name="delete_button">Löschen</string>
+    <string name="saved_jokes_textView">Gespeicherte Witze</string>
+    <string name="blacklisted_jokes_textView">Blockierte Witze</string>
+</resources>

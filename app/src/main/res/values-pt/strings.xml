@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">JokeJet</string>
+    <string name="get_joke_button">Obter piada</string>
+    <string name="filter_button">Filtrar</string>
+    <string name="submit_button">Enviar</string>
+    <string name="cancel_button">Cancelar</string>
+    <string name="filters_textView">Filtros</string>
+    <string name="categories_textView">Categoria/Categorias:</string>
+    <string name="programming">Programação</string>
+    <string name="misc">Diversos</string>
+    <string name="dark">Sombrio</string>
+    <string name="pun">Trocadilho</string>
+    <string name="spooky">Assustador</string>
+    <string name="christmas">Natal</string>
+    <string name="flags_textView">Temas a excluir:</string>
+    <string name="nsfw">NSFW</string>
+    <string name="religious">Religioso</string>
+    <string name="political">Político</string>
+    <string name="racist">Racista</string>
+    <string name="sexist">Sexista</string>
+    <string name="explicit">Explícito</string>
+    <string name="jokeType_textView">Tipo de piada:</string>
+    <string name="single">Simples</string>
+    <string name="twopart">Duas partes</string>
+    <string name="jokeContains_textView">Piada contém:</string>
+    <string name="reveal_delivery_button">Revelar punchline</string>
+    <string name="saved_jokes_button">Piadas salvas</string>
+    <string name="blackListed_jokes_button">Piadas bloqueadas</string>
+    <string name="delete_button">Excluir</string>
+    <string name="saved_jokes_textView">Piadas salvas</string>
+    <string name="blacklisted_jokes_textView">Piadas bloqueadas</string>
+</resources>

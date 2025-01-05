@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">JokeJet</string>
+    <string name="get_joke_button">Obtenir une blague</string>
+    <string name="filter_button">Filtrer</string>
+    <string name="submit_button">Soumettre</string>
+    <string name="cancel_button">Annuler</string>
+    <string name="filters_textView">Filtres</string>
+    <string name="categories_textView">Catégorie/Catégories :</string>
+    <string name="programming">Programmation</string>
+    <string name="misc">Divers</string>
+    <string name="dark">Sombre</string>
+    <string name="pun">Jeu de mots</string>
+    <string name="spooky">Effrayant</string>
+    <string name="christmas">Noël</string>
+    <string name="flags_textView">À exclure :</string>
+    <string name="nsfw">NSFW</string>
+    <string name="religious">Religieux</string>
+    <string name="political">Politique</string>
+    <string name="racist">Raciste</string>
+    <string name="sexist">Sexiste</string>
+    <string name="explicit">Explicite</string>
+    <string name="jokeType_textView">Type de blague :</string>
+    <string name="single">Unique</string>
+    <string name="twopart">Deux parties</string>
+    <string name="jokeContains_textView">La blague contient :</string>
+    <string name="reveal_delivery_button">Révéler la chute</string>
+    <string name="saved_jokes_button">Blagues sauvegardées</string>
+    <string name="blackListed_jokes_button">Blagues bloquées</string>
+    <string name="delete_button">Supprimer</string>
+    <string name="saved_jokes_textView">Blagues sauvegardées</string>
+    <string name="blacklisted_jokes_textView">Blagues bloquées</string>
+</resources>

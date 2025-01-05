@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">JokeJet</string>
+    <string name="get_joke_button">Obtener chiste</string>
+    <string name="filter_button">Filtrar</string>
+    <string name="submit_button">Enviar</string>
+    <string name="cancel_button">Cancelar</string>
+    <string name="filters_textView">Filtros</string>
+    <string name="categories_textView">Categoría/Categorías:</string>
+    <string name="programming">Programación</string>
+    <string name="misc">Misceláneos</string>
+    <string name="dark">Oscuro</string>
+    <string name="pun">Juego de palabras</string>
+    <string name="spooky">Espeluznante</string>
+    <string name="christmas">Navidad</string>
+    <string name="flags_textView">Excluir temas:</string>
+    <string name="nsfw">NSFW</string>
+    <string name="religious">Religioso</string>
+    <string name="political">Político</string>
+    <string name="racist">Racista</string>
+    <string name="sexist">Sexista</string>
+    <string name="explicit">Explícito</string>
+    <string name="jokeType_textView">Tipo de chiste:</string>
+    <string name="single">Simple</string>
+    <string name="twopart">Dos partes</string>
+    <string name="jokeContains_textView">El chiste contiene:</string>
+    <string name="reveal_delivery_button">Revelar remate</string>
+    <string name="saved_jokes_button">Chistes guardados</string>
+    <string name="blackListed_jokes_button">Chistes bloqueados</string>
+    <string name="delete_button">Eliminar</string>
+    <string name="saved_jokes_textView">Chistes guardados</string>
+    <string name="blacklisted_jokes_textView">Chistes bloqueados</string>
+</resources>
