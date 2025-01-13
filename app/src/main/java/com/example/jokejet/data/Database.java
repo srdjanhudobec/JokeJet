@@ -1,8 +1,10 @@
-package com.example.jokejet;
+package com.example.jokejet.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.jokejet.model.Joke;
 
 public class Database extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "jokejet.sqlite";

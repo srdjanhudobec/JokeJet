@@ -1,4 +1,4 @@
-package com.example.jokejet;
+package com.example.jokejet.ui.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +23,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.jokejet.R;
+import com.example.jokejet.data.Database;
+import com.example.jokejet.model.Joke;
+import com.example.jokejet.data.JokeRepository;
+import com.example.jokejet.ui.activities.BlacklistedJokes;
+import com.example.jokejet.ui.activities.SavedJokes;
 
 import org.json.JSONObject;
 

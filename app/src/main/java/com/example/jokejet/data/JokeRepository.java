@@ -1,9 +1,11 @@
-package com.example.jokejet;
+package com.example.jokejet.data;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import com.example.jokejet.model.Joke;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,7 @@ public class JokeRepository {
         this.db = db;
     }
 
-    public Joke addJoke(int id,String content,String category,String type,String delivery,String status){
+    public Joke addJoke(int id, String content, String category, String type, String delivery, String status){
         SQLiteDatabase db = this.db.getWritableDatabase();
         ContentValues cv = new ContentValues();
 

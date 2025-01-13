@@ -1,4 +1,4 @@
-package com.example.jokejet;
+package com.example.jokejet.model;
 
 public class Joke {
 

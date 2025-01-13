@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/getJokeFragment"
-        android:name="com.example.jokejet.GetJokeFragment"
+        android:name="com.example.jokejet.ui.fragments.GetJokeFragment"
         android:label="fragment_get_joke"
         tools:layout="@layout/fragment_get_joke" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/filterJokeFragment"
-        android:name="com.example.jokejet.FilterJokeFragment"
+        android:name="com.example.jokejet.ui.fragments.FilterJokeFragment"
         android:label="fragment_filter_joke"
         tools:layout="@layout/fragment_filter_joke" >
         <action

@@ -1,4 +1,4 @@
-package com.example.jokejet;
+package com.example.jokejet.ui.activities;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +11,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.jokejet.R;
+import com.example.jokejet.adapter.JokeAdapter;
+import com.example.jokejet.data.Database;
+import com.example.jokejet.model.Joke;
+import com.example.jokejet.data.JokeRepository;
 
 import java.util.List;
 
